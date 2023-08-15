@@ -5,6 +5,7 @@
 
 #include "chip8.h"
 #include "chip8_config.h"
+#include "chip8_display.h"
 #include "chip8_keyboard.h"
 
 const char keyboard_map[CHIP8_KEYS_COUNT] = {
@@ -17,14 +18,15 @@ int main(int argc, char **argv){
 
     struct chip8 chip8;
     chip8_init(&chip8);
+    chip8_display_set(&chip8.display, 0, 0);
 
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window *window = SDL_CreateWindow( 
         "Chip8", 
         SDL_WINDOWPOS_UNDEFINED, 
         SDL_WINDOWPOS_UNDEFINED,
-        CHIP8_WIDTH * CHIP8_WINDOW_SCALE,
-        CHIP8_HEIGHT * CHIP8_WINDOW_SCALE,
+        CHIP8_DISPLAY_WIDTH * CHIP8_WINDOW_SCALE,
+        CHIP8_DISPLAY_HEIGHT * CHIP8_WINDOW_SCALE,
         SDL_WINDOW_SHOWN
     );
 
@@ -60,17 +62,27 @@ int main(int argc, char **argv){
 
             }
         }
-
+        // clear the screen with black color
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
         SDL_RenderClear(renderer);
-
+        // set draw color to white
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
-        SDL_Rect r;
-        r.x =0 ;
-        r.y =0 ;
-        r.w =40 ;
-        r.h =40 ;
-        SDL_RenderDrawRect(renderer, &r);
+        // draw the chip8 display
+        for(int x = 0; x < CHIP8_DISPLAY_WIDTH; x++){
+            for(int y = 0; y < CHIP8_DISPLAY_HEIGHT; y++){
+                if(chip8_display_is_set(&chip8.display, x, y)) {
+                    // output the scaled pixel
+                    SDL_Rect r;
+                    r.x = x * CHIP8_WINDOW_SCALE;
+                    r.y = y * CHIP8_WINDOW_SCALE;
+                    r.w = CHIP8_WINDOW_SCALE;
+                    r.h = CHIP8_WINDOW_SCALE;
+                    SDL_RenderFillRect(renderer, &r);
+                }
+
+            }
+        }
+
         SDL_RenderPresent(renderer);
     }
 
