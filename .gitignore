@@ -1,4 +1,6 @@
 compile_commands.json
 .cache
+build
+bin
 *.d
 *.o
