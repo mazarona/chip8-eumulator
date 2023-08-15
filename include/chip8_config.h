@@ -9,5 +9,6 @@
 #define CHIP8_REGISTERS_COUNT 16
 #define CHIP8_STACK_DEPTH 16
 #define CHIP8_KEYS_COUNT 16
+#define CHIP8_CS_LOAD_ADDRESS 0x00 // character set load address
 
 #endif
