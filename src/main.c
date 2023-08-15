@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include <unistd.h>
+
 #include "SDL.h"
-#include "SDL_events.h"
-#include "SDL_render.h"
 
 #include "chip8.h"
 #include "chip8_config.h"
@@ -92,6 +92,12 @@ int main(int argc, char **argv){
         }
 
         SDL_RenderPresent(renderer);
+
+        if(chip8.registers.DT > 0){
+            sleep(17 * chip8.registers.DT);// 60 Hz decrement
+            chip8.registers.DT = 0;
+        }
+        // TODO: Implement sound timer.
     }
 
 
