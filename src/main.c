@@ -18,7 +18,15 @@ int main(int argc, char **argv){
 
     struct chip8 chip8;
     chip8_init(&chip8);
-    chip8_display_set(&chip8.display, 0, 0);
+
+    chip8_dipslay_draw_sprite(&chip8.display, 62, 30, &chip8.memory.memory[0x00], 5);
+
+    for(int i = 0; i < 32; i++){
+        for(int j = 0; j < 64; j++){
+            printf("%d", chip8.display.display[i][j]);
+        }
+        printf("\n");
+    }
 
     SDL_Init(SDL_INIT_EVERYTHING);
     SDL_Window *window = SDL_CreateWindow( 

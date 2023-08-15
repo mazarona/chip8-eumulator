@@ -21,7 +21,8 @@ const char chip8_default_cs[] ={
     0xf0, 0x80, 0xf0, 0x80, 0x80
 };
 
+
 void chip8_init(chip8 *chip8){
     memset(chip8, 0, sizeof(struct chip8));
-    memcpy(&chip8->memory.memory, chip8_default_cs, CHIP8_CS_LOAD_ADDRESS);
+    memcpy(&chip8->memory.memory, chip8_default_cs, sizeof(chip8_default_cs));
 }

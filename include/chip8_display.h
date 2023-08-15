@@ -11,5 +11,6 @@ typedef struct chip8_display{
 
 void chip8_display_set(chip8_display *display, int x, int y);
 bool chip8_display_is_set(chip8_display *display, int x, int y);
+bool chip8_dipslay_draw_sprite(chip8_display *display, int x, int y, const char *sprite, int size);
 
 #endif
