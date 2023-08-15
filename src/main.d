@@ -162,9 +162,11 @@ src/main.o: src/main.c /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h /usr/include/SDL2/SDL_events.h \
- /usr/include/SDL2/SDL_render.h include/chip8_config.h include/chip8.h \
- include/chip8_config.h include/chip8_mem.h include/chip8_registers.h \
- include/chip8_stack.h include/chip8_registers.h
+ /usr/include/SDL2/SDL_render.h include/chip8.h include/chip8_config.h \
+ include/chip8_mem.h include/chip8_registers.h include/chip8_stack.h \
+ include/chip8_keyboard.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stdbool.h \
+ include/chip8_config.h include/chip8_keyboard.h
 /usr/include/stdc-predef.h:
 /usr/include/stdio.h:
 /usr/include/bits/libc-header-start.h:
@@ -386,10 +388,12 @@ src/main.o: src/main.c /usr/include/stdc-predef.h /usr/include/stdio.h \
 /usr/include/SDL2/SDL_misc.h:
 /usr/include/SDL2/SDL_events.h:
 /usr/include/SDL2/SDL_render.h:
-include/chip8_config.h:
 include/chip8.h:
 include/chip8_config.h:
 include/chip8_mem.h:
 include/chip8_registers.h:
 include/chip8_stack.h:
-include/chip8_registers.h:
+include/chip8_keyboard.h:
+/usr/lib/gcc/x86_64-pc-linux-gnu/13.1.1/include/stdbool.h:
+include/chip8_config.h:
+include/chip8_keyboard.h:
