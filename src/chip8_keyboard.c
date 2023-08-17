@@ -6,9 +6,14 @@ static void chip8_kb_in_bounds(int key){
     assert(key >= 0 && key < CHIP8_KEYS_COUNT);
 }
 
-int chip8_keyboard_map(const char* map, char key){
+void chip8_keyboard_set_map(chip8_keyboard* keyboard, const char *map){
+    assert(map);
+    keyboard->keyboard_map = map;
+}
+
+int chip8_keyboard_map(chip8_keyboard *keyboard, char key){
     for(int i = 0; i < CHIP8_KEYS_COUNT; i++){
-        if(map[i] == key){
+        if(keyboard->keyboard_map[i] == key){
             return i;
         }
     }

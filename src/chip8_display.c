@@ -1,6 +1,7 @@
 #include "chip8_display.h"
 #include "chip8_config.h"
 #include <assert.h>
+#include <memory.h>
 
 static void chip8_display_in_bounds(int x, int y){
     assert(x >= 0 && x < CHIP8_DISPLAY_WIDTH && y >= 0 && y < CHIP8_DISPLAY_HEIGHT);
@@ -27,4 +28,8 @@ bool chip8_dipslay_draw_sprite(chip8_display *display, int x, int y, const char 
         }
     }
     return colision;
+}
+
+void chip8_display_clear(chip8_display *display){
+    memset(display->display, 0, sizeof(display->display));
 }
