@@ -4,6 +4,8 @@
 
 #include "SDL.h"
 
+#include "SDL_keycode.h"
+#include "SDL_render.h"
 #include "chip8.h"
 #include "chip8_config.h"
 #include "chip8_display.h"
@@ -87,6 +89,7 @@ int main(int argc, const char **argv){
                 case SDL_KEYDOWN:
                 {
                     char key = event.key.keysym.sym;
+                    if(key == SDLK_q) goto out;
                     int vkey = chip8_keyboard_map(&chip8.keyboard, key);
                     if(vkey != -1){
                         chip8_keyboard_down(&chip8.keyboard, vkey);
@@ -129,6 +132,7 @@ int main(int argc, const char **argv){
 
 
 out:
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     return 0;
 }
