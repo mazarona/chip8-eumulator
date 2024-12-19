@@ -16,7 +16,7 @@ SRC_DIR = src
 SRCS = $(foreach D,$(SRC_DIR),$(wildcard $(D)/*.c))
 OBJS = $(patsubst %.c,%.o,$(SRCS))
 DEPS = $(patsubst %.c,%.d,$(SRCS))
-BINARY = ./bin/main 
+BINARY = ./main 
 
 all : $(BINARY)
 
